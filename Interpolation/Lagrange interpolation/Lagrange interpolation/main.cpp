@@ -9,22 +9,22 @@
 #include <iostream>
 #include <omp.h>
 #include <string>
+#include <math.h>
 
 double getBasicPolynomialValue(int n, int polynomialNumber, double* x, double* y, double argument) {
-    double upValue = 0, downValue = 0;
+    double result = 1;
     for(int i = 0; i < n; i++)
         if(i != polynomialNumber) {
-            upValue *= (argument - x[i]);
-            downValue *= (x[polynomialNumber]-x[i]);
+            result *= (argument - x[i])/(x[polynomialNumber]-x[i]);
         }
-    return upValue / downValue;
+    return result;
 }
 
 double getLagrangePolynomialValue(int n, double* x, double* y, double argument) {
     double result = 0;
-#pragma omp parallel reduction (+:result)
+#pragma omp parallel for reduction (+:result)
     for(int i = 0; i < n; i++) {
-        result += getBasicPolynomialValue(n, i, x, y, argument);
+        result += y[i] * getBasicPolynomialValue(n, i, x, y, argument);
     }
     return result;
 }
@@ -33,6 +33,10 @@ double fRand(double fMin, double fMax)
 {
     double f = (double)rand() / RAND_MAX;
     return fMin + f * (fMax - fMin);
+}
+
+double polynomial(double x, int degree) {
+    return pow(x, degree-1);
 }
 
 int main(int argc, const char * argv[]) {
@@ -58,9 +62,11 @@ int main(int argc, const char * argv[]) {
             std::cin >> y[i];
         }
     } else if(status == "n") {
+        double a=0, b=M_PI;
+        srand(time(0));
         for(int i = 0; i < pointsCount; i++) {
-            x[i] = fRand(0, 100000);
-            y[i] = fRand(0, 100000);
+            x[i] = (a+b)/2+((b-a)/2)*cos(((2*i+1)*M_PI)/(2*(pointsCount+1)));
+            y[i] = sin(x[i]);
         }
     }
     status = "y";
@@ -85,5 +91,7 @@ int main(int argc, const char * argv[]) {
         std::cout << "\nCalculate one more value?(y/n)";
         std::cin >> status;
     }
+    delete[] x;
+    delete[] y;
     return 0;
 }
