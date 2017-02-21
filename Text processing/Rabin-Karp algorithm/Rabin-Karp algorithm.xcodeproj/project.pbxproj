@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C14BEC21E5C83EB00816DC5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C14BEC11E5C83EB00816DC5 /* main.cpp */; };
+		2C14BECA1E5C84C500816DC5 /* libiomp5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C14BEC91E5C84C500816DC5 /* libiomp5.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		2C14BEBE1E5C83EB00816DC5 /* Rabin-Karp algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Rabin-Karp algorithm"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C14BEC11E5C83EB00816DC5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		2C14BEC91E5C84C500816DC5 /* libiomp5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiomp5.dylib; path = ../../../../../../usr/local/Cellar/llvm/3.9.1/lib/libiomp5.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C14BECA1E5C84C500816DC5 /* libiomp5.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +46,7 @@
 			children = (
 				2C14BEC01E5C83EB00816DC5 /* Rabin-Karp algorithm */,
 				2C14BEBF1E5C83EB00816DC5 /* Products */,
+				2C14BEC81E5C84C500816DC5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +64,14 @@
 				2C14BEC11E5C83EB00816DC5 /* main.cpp */,
 			);
 			path = "Rabin-Karp algorithm";
+			sourceTree = "<group>";
+		};
+		2C14BEC81E5C84C500816DC5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C14BEC91E5C84C500816DC5 /* libiomp5.dylib */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,7 +229,15 @@
 		2C14BEC61E5C83EB00816DC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CC = /usr/local/opt/llvm/bin/clang;
+				CLANG_ENABLE_MODULES = NO;
 				DEVELOPMENT_TEAM = JGX86HY4QU;
+				HEADER_SEARCH_PATHS = /usr/local/opt/llvm/lib/clang/3.9.1/include;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/opt/llvm/lib,
+					/usr/local/Cellar/llvm/3.9.1/lib,
+				);
+				OTHER_CFLAGS = "-fopenmp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -225,7 +245,15 @@
 		2C14BEC71E5C83EB00816DC5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CC = /usr/local/opt/llvm/bin/clang;
+				CLANG_ENABLE_MODULES = NO;
 				DEVELOPMENT_TEAM = JGX86HY4QU;
+				HEADER_SEARCH_PATHS = /usr/local/opt/llvm/lib/clang/3.9.1/include;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/opt/llvm/lib,
+					/usr/local/Cellar/llvm/3.9.1/lib,
+				);
+				OTHER_CFLAGS = "-fopenmp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
