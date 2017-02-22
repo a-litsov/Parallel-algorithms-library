@@ -7,12 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2C14BEC21E5C83EB00816DC5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C14BEC11E5C83EB00816DC5 /* main.cpp */; };
-		2C14BECA1E5C84C500816DC5 /* libiomp5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C14BEC91E5C84C500816DC5 /* libiomp5.dylib */; };
+		2C3EFACE1E5DFF1A002F7895 /* test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C3EFACD1E5DFF1A002F7895 /* test.cpp */; };
+		2C3EFACF1E5DFFD8002F7895 /* libiomp5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C14BEC91E5C84C500816DC5 /* libiomp5.dylib */; };
+		2C3EFADA1E5E0142002F7895 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C3EFAD91E5E0142002F7895 /* main.cpp */; };
+		2C3EFADE1E5E078C002F7895 /* libiomp5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C14BEC91E5C84C500816DC5 /* libiomp5.dylib */; };
+		2C3EFAE61E5E1048002F7895 /* sol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C3EFAE41E5E1048002F7895 /* sol.cpp */; };
+		2C3EFAE71E5E1048002F7895 /* sol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C3EFAE41E5E1048002F7895 /* sol.cpp */; };
+		2C3EFAEB1E5E10F0002F7895 /* Other.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C3EFAEA1E5E10F0002F7895 /* Other.cpp */; };
+		2C3EFAEC1E5E10F0002F7895 /* Other.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C3EFAEA1E5E10F0002F7895 /* Other.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2C14BEBC1E5C83EB00816DC5 /* CopyFiles */ = {
+		2C3EFAC31E5DFE84002F7895 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		2C3EFAD51E5E0142002F7895 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -24,17 +39,31 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2C14BEBE1E5C83EB00816DC5 /* Rabin-Karp algorithm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Rabin-Karp algorithm"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C14BEC11E5C83EB00816DC5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2C14BEC91E5C84C500816DC5 /* libiomp5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiomp5.dylib; path = ../../../../../../usr/local/Cellar/llvm/3.9.1/lib/libiomp5.dylib; sourceTree = "<group>"; };
+		2C3EFAC51E5DFE84002F7895 /* Test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Test; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C3EFACD1E5DFF1A002F7895 /* test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = test.cpp; sourceTree = "<group>"; };
+		2C3EFAD71E5E0142002F7895 /* Demonstration */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Demonstration; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C3EFAD91E5E0142002F7895 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		2C3EFAE41E5E1048002F7895 /* sol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sol.cpp; sourceTree = "<group>"; };
+		2C3EFAE51E5E1048002F7895 /* sol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sol.h; sourceTree = "<group>"; };
+		2C3EFAE91E5E10B5002F7895 /* Other.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Other.h; sourceTree = "<group>"; };
+		2C3EFAEA1E5E10F0002F7895 /* Other.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Other.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2C14BEBB1E5C83EB00816DC5 /* Frameworks */ = {
+		2C3EFAC21E5DFE84002F7895 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C14BECA1E5C84C500816DC5 /* libiomp5.dylib in Frameworks */,
+				2C3EFACF1E5DFFD8002F7895 /* libiomp5.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C3EFAD41E5E0142002F7895 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C3EFADE1E5E078C002F7895 /* libiomp5.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,7 +73,10 @@
 		2C14BEB51E5C83EB00816DC5 = {
 			isa = PBXGroup;
 			children = (
-				2C14BEC01E5C83EB00816DC5 /* Rabin-Karp algorithm */,
+				2C3EFAE81E5E10A1002F7895 /* Other */,
+				2C3EFAE31E5E1048002F7895 /* Solution */,
+				2C3EFAC61E5DFE84002F7895 /* Test */,
+				2C3EFAD81E5E0142002F7895 /* Demonstration */,
 				2C14BEBF1E5C83EB00816DC5 /* Products */,
 				2C14BEC81E5C84C500816DC5 /* Frameworks */,
 			);
@@ -53,17 +85,10 @@
 		2C14BEBF1E5C83EB00816DC5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C14BEBE1E5C83EB00816DC5 /* Rabin-Karp algorithm */,
+				2C3EFAC51E5DFE84002F7895 /* Test */,
+				2C3EFAD71E5E0142002F7895 /* Demonstration */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		2C14BEC01E5C83EB00816DC5 /* Rabin-Karp algorithm */ = {
-			isa = PBXGroup;
-			children = (
-				2C14BEC11E5C83EB00816DC5 /* main.cpp */,
-			);
-			path = "Rabin-Karp algorithm";
 			sourceTree = "<group>";
 		};
 		2C14BEC81E5C84C500816DC5 /* Frameworks */ = {
@@ -74,24 +99,75 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2C3EFAC61E5DFE84002F7895 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				2C3EFACD1E5DFF1A002F7895 /* test.cpp */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		2C3EFAD81E5E0142002F7895 /* Demonstration */ = {
+			isa = PBXGroup;
+			children = (
+				2C3EFAD91E5E0142002F7895 /* main.cpp */,
+			);
+			path = Demonstration;
+			sourceTree = "<group>";
+		};
+		2C3EFAE31E5E1048002F7895 /* Solution */ = {
+			isa = PBXGroup;
+			children = (
+				2C3EFAE41E5E1048002F7895 /* sol.cpp */,
+				2C3EFAE51E5E1048002F7895 /* sol.h */,
+			);
+			path = Solution;
+			sourceTree = "<group>";
+		};
+		2C3EFAE81E5E10A1002F7895 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				2C3EFAE91E5E10B5002F7895 /* Other.h */,
+				2C3EFAEA1E5E10F0002F7895 /* Other.cpp */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C14BEBD1E5C83EB00816DC5 /* Rabin-Karp algorithm */ = {
+		2C3EFAC41E5DFE84002F7895 /* Test */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C14BEC51E5C83EB00816DC5 /* Build configuration list for PBXNativeTarget "Rabin-Karp algorithm" */;
+			buildConfigurationList = 2C3EFAC91E5DFE84002F7895 /* Build configuration list for PBXNativeTarget "Test" */;
 			buildPhases = (
-				2C14BEBA1E5C83EB00816DC5 /* Sources */,
-				2C14BEBB1E5C83EB00816DC5 /* Frameworks */,
-				2C14BEBC1E5C83EB00816DC5 /* CopyFiles */,
+				2C3EFAC11E5DFE84002F7895 /* Sources */,
+				2C3EFAC21E5DFE84002F7895 /* Frameworks */,
+				2C3EFAC31E5DFE84002F7895 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Rabin-Karp algorithm";
-			productName = "Rabin-Karp algorithm";
-			productReference = 2C14BEBE1E5C83EB00816DC5 /* Rabin-Karp algorithm */;
+			name = Test;
+			productName = Test;
+			productReference = 2C3EFAC51E5DFE84002F7895 /* Test */;
+			productType = "com.apple.product-type.tool";
+		};
+		2C3EFAD61E5E0142002F7895 /* Demonstration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C3EFADB1E5E0142002F7895 /* Build configuration list for PBXNativeTarget "Demonstration" */;
+			buildPhases = (
+				2C3EFAD31E5E0142002F7895 /* Sources */,
+				2C3EFAD41E5E0142002F7895 /* Frameworks */,
+				2C3EFAD51E5E0142002F7895 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Demonstration;
+			productName = Demonstration;
+			productReference = 2C3EFAD71E5E0142002F7895 /* Demonstration */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -103,7 +179,12 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = al1as;
 				TargetAttributes = {
-					2C14BEBD1E5C83EB00816DC5 = {
+					2C3EFAC41E5DFE84002F7895 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = JGX86HY4QU;
+						ProvisioningStyle = Automatic;
+					};
+					2C3EFAD61E5E0142002F7895 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = JGX86HY4QU;
 						ProvisioningStyle = Automatic;
@@ -122,17 +203,30 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C14BEBD1E5C83EB00816DC5 /* Rabin-Karp algorithm */,
+				2C3EFAC41E5DFE84002F7895 /* Test */,
+				2C3EFAD61E5E0142002F7895 /* Demonstration */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2C14BEBA1E5C83EB00816DC5 /* Sources */ = {
+		2C3EFAC11E5DFE84002F7895 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C14BEC21E5C83EB00816DC5 /* main.cpp in Sources */,
+				2C3EFAE61E5E1048002F7895 /* sol.cpp in Sources */,
+				2C3EFACE1E5DFF1A002F7895 /* test.cpp in Sources */,
+				2C3EFAEB1E5E10F0002F7895 /* Other.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C3EFAD31E5E0142002F7895 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C3EFAE71E5E1048002F7895 /* sol.cpp in Sources */,
+				2C3EFADA1E5E0142002F7895 /* main.cpp in Sources */,
+				2C3EFAEC1E5E10F0002F7895 /* Other.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +320,45 @@
 			};
 			name = Release;
 		};
-		2C14BEC61E5C83EB00816DC5 /* Debug */ = {
+		2C3EFACA1E5DFE84002F7895 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CC = /usr/local/opt/llvm/bin/clang;
+				CLANG_ENABLE_MODULES = NO;
+				DEVELOPMENT_TEAM = JGX86HY4QU;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/opt/llvm/lib/clang/3.9.1/include,
+					../..,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/opt/llvm/lib,
+					/usr/local/Cellar/llvm/3.9.1/lib,
+				);
+				OTHER_CFLAGS = "-fopenmp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2C3EFACB1E5DFE84002F7895 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CC = /usr/local/opt/llvm/bin/clang;
+				CLANG_ENABLE_MODULES = NO;
+				DEVELOPMENT_TEAM = JGX86HY4QU;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/opt/llvm/lib/clang/3.9.1/include,
+					../..,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/opt/llvm/lib,
+					/usr/local/Cellar/llvm/3.9.1/lib,
+				);
+				OTHER_CFLAGS = "-fopenmp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2C3EFADC1E5E0142002F7895 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CC = /usr/local/opt/llvm/bin/clang;
@@ -242,7 +374,7 @@
 			};
 			name = Debug;
 		};
-		2C14BEC71E5C83EB00816DC5 /* Release */ = {
+		2C3EFADD1E5E0142002F7895 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CC = /usr/local/opt/llvm/bin/clang;
@@ -270,11 +402,19 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C14BEC51E5C83EB00816DC5 /* Build configuration list for PBXNativeTarget "Rabin-Karp algorithm" */ = {
+		2C3EFAC91E5DFE84002F7895 /* Build configuration list for PBXNativeTarget "Test" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2C14BEC61E5C83EB00816DC5 /* Debug */,
-				2C14BEC71E5C83EB00816DC5 /* Release */,
+				2C3EFACA1E5DFE84002F7895 /* Debug */,
+				2C3EFACB1E5DFE84002F7895 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2C3EFADB1E5E0142002F7895 /* Build configuration list for PBXNativeTarget "Demonstration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C3EFADC1E5E0142002F7895 /* Debug */,
+				2C3EFADD1E5E0142002F7895 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
