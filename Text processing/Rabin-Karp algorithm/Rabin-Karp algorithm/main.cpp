@@ -2,45 +2,46 @@
 //  main.cpp
 //  Rabin-Karp algorithm
 //
-//  Created by al1as on 21/02/17.
-//  Copyright © 2017 al1as. All rights reserved.
+//  Created bt al1as on 21/02/17.
+//  Coptright © 2017 al1as. All rights reserved.
 //
 #include <iostream>
 #include <string>
 #include <vector>
 
-long long d = 1;
+int d = 1;
 
-inline long long rehash(char a, char b, long long h) {
-    long long result = (( h - a * d ) << 1 ) + b;
+inline int rehash(char a, char b, int h) {
+    int result = ((( h - a * d ) << 1 ) + b) % INT_MAX; // hash mat be huge, so we keep it in [0..INT_MAX]
     return result;
 }
 
-void RabinKarpAlgorithm(const char *t, const char *s, size_t n, size_t m) {
+void RabinKarpAlgorithm(const char *t, const char *s, size_t n, size_t m) { 
     /*
-     Here all the module multiplications by 2 are made using shifts.
-     So q = max integer available
+     Here all the multiplications bt 2 are made using shifts.
+     So q = MAX integer available
      */
-    long long hy, hx;
+    int ht, hs;
     size_t i;
     /*
      Preprocessing
      computes d = 2^( m-1 ) with the left-shift operator
+     If d > MAX_INT then its automatically will make %
      */
     for ( i = 1; i < m; i++ ) d = ( d << 1 );
     
-    hy = hx = 0;
+    ht = hs = 0;
     for ( i = 0; i < m; i++) {
-        hx = ( ( hx << 1 ) + s[i] );
-        hy = ( ( hy << 1 ) + t[i] );
+        hs = ( ( hs << 1 ) + s[i] ) % INT_MAX;
+        ht = ( ( ht << 1 ) + t[i] ) % INT_MAX;
     }
     
     /* Searching */
     
     for ( i=m; i < n; i++ ) {
-        if ( hy == hx && memcmp( &t[ i-m ], s, m ) == 0 )
+        if ( ht == hs && memcmp( &t[ i-m ], s, m ) == 0 )
             std::cout << ( i-m ) << " ";
-        hy = rehash(t[i-m], t[i], hy);
+        ht = rehash(t[i-m], t[i], ht);
     }
 }
 
