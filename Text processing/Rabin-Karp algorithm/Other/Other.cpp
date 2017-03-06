@@ -7,10 +7,11 @@
 //
 
 #include "Other.h"
+#include <string>
 
 // returns randomly generated string with length equals to value stored in 'length' argument
 std::string generateRandomString(int length) {
-    srand(time(0));
+    srand(static_cast<unsigned int>(time(0)));
     std::string alphabet = "abcdefghijklmnopqrstuvwxyz", result = "";
     for(int i = 0; i < length; i++) {
         result += alphabet[rand() % alphabet.size()];
@@ -22,7 +23,7 @@ std::string generateRandomString(int length) {
 // returns randomly generated pattern-string through argument 'pattern' if it's not set
 // returns vector<int> with pattern positions in generated string through argument 'positions'
 std::string generateRandomStringByPattern(std::string &pattern, std::vector<size_t> *positions, size_t length) {
-    srand(time(0));
+    srand(static_cast<unsigned int>(time(0)));
     // if length is not set then we set it equals random number in [1, max_length]
     int max_length = 10000;
     if (length == 0)
