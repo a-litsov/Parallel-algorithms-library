@@ -8,20 +8,40 @@
 
 #include "Other.h"
 
-std::string generateRandomString(size_t len, std::string s, std::vector<size_t> *positions) {
+// returns randomly generated string with length equals to value stored in 'length' argument
+std::string generateRandomString(int length) {
     srand(time(0));
-    std::string str = "abcdefghijklmnopqrstuvwxyz";
-    std::string newstr;
+    std::string alphabet = "abcdefghijklmnopqrstuvwxyz", result = "";
+    for(int i = 0; i < length; i++) {
+        result += alphabet[rand() % alphabet.size()];
+    }
+    return result;
+}
+
+// returns randomly generated string (with size of 'length' or random size otherwise) which may include pattern-string random amount of times
+// returns randomly generated pattern-string through argument 'pattern' if it's not set
+// returns vector<int> with pattern positions in generated string through argument 'positions'
+std::string generateRandomStringByPattern(std::string &pattern, std::vector<size_t> *positions, size_t length) {
+    srand(time(0));
+    // if length is not set then we set it equals random number in [1, max_length]
+    int max_length = 10000;
+    if (length == 0)
+        length = rand() % max_length + 1;
+    // if pattern-string not set
+    int coef = 8; // how many times pattern.length smaller than text.length
+    if (pattern.size() == 0)
+        pattern = generateRandomString(rand() % length/coef + 1);
+    std::string alphabet = "abcdefghijklmnopqrstuvwxyz", result = "";
     int pos;
-    while(newstr.size() < len) {
-        pos = ((rand() % (str.size() - 1)));
-        newstr += str.substr(pos,1);
-        if (s.size() != 0 && rand() % 5 == 2) {
-            positions->push_back(newstr.size());
-            newstr += s;
+    while(result.size() < length) {
+        pos = rand() % alphabet.size();
+        result += alphabet[pos];
+        if (rand() %  length < length/2 && result.size() + pattern.size() <= length) {
+            positions->push_back(result.size());
+            result += pattern;
         }
     }
-    return newstr;
+    return result;
 }
 
 std::vector<size_t> getAllOccurences(std::string str, std::string sub) {

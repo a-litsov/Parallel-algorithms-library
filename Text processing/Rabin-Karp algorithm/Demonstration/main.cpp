@@ -21,16 +21,16 @@ int main(int argc, const char * argv[]) {
     std::cin >> length;
     s = generateRandomString(length);
     
-    std::cout << "Enter T string(text) minimum size:";
+    std::cout << "Enter T string(text) size:";
     std::cin >> length;
     std::vector<size_t> rightPositions, positions;
-    t = generateRandomString(length, s, &rightPositions);
+    t = generateRandomStringByPattern(s, &rightPositions, length);
     
     positions = RabinKarpAlgorithm(t.c_str(), s.c_str(), t.size(), s.size());
     
     std::cout << "All is done! Result is:";
     std::cout << (positions == rightPositions);
-    std::cout << "\nOccurences count:" << rightPositions.size();
+    std::cout << "\nOccurences count:" << rightPositions.size() << "\n";
     
     return 0;
 }
