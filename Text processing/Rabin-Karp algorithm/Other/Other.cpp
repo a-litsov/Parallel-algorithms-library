@@ -22,7 +22,7 @@ std::string generateRandomString(int length) {
 // returns randomly generated string (with size of 'length' or random size otherwise) which may include pattern-string random amount of times
 // returns randomly generated pattern-string through argument 'pattern' if it's not set
 // returns vector<int> with pattern positions in generated string through argument 'positions'
-std::string generateRandomStringByPattern(std::string &pattern, std::vector<size_t> *positions, size_t length) {
+std::string generateRandomStringByPattern(std::string &pattern, std::vector<long> *positions, size_t length) {
     srand(static_cast<unsigned int>(time(0)));
     // if length is not set then we set it equals random number in [1, max_length]
     int max_length = 10000;
@@ -45,12 +45,12 @@ std::string generateRandomStringByPattern(std::string &pattern, std::vector<size
     return result;
 }
 
-std::vector<size_t> getAllOccurences(std::string str, std::string sub) {
-    std::vector<size_t> positions; // holds all the positions that sub occurs within str
+std::vector<long> getAllOccurences(std::string str, std::string sub) {
+    std::vector<long> positions; // holds all the positions that sub occurs within str
     
     if (sub == "")
         return positions;
-    size_t pos = str.find(sub, 0);
+    long pos = str.find(sub, 0);
     while(pos != std::string::npos)
     {
         positions.push_back(pos);

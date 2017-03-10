@@ -23,7 +23,7 @@ TEST_CASE("Substring finded at start", "[Rabin-Karp algorithm]") {
     
     std::string t = "hellouaotstnahothstnheaothnhthkthaeosutnhththaestnuhygsaseohtu";
     std::string s = "hello";
-    std::vector<size_t> result = RabinKarpAlgorithm(t.c_str(), s.c_str(), t.size(), s.size());
+    std::vector<long> result = RabinKarpAlgorithm(t.c_str(), s.c_str(), t.size(), s.size());
     std::sort(result.begin(), result.end());
     REQUIRE( result == getAllOccurences(t, s));
 }
@@ -33,7 +33,7 @@ TEST_CASE("Substring finded at end", "[Rabin-Karp algorithm]") {
 
     std::string t = "hellouaotstnahothstnheaothnhthkthaeosutnhththaestnuhygsaseohtupattern";
     std::string s = "pattern";
-    std::vector<size_t> result = RabinKarpAlgorithm(t.c_str(), s.c_str(), t.size(), s.size());
+    std::vector<long> result = RabinKarpAlgorithm(t.c_str(), s.c_str(), t.size(), s.size());
     std::sort(result.begin(), result.end());
     REQUIRE( result == getAllOccurences(t, s));
 }
@@ -45,7 +45,7 @@ TEST_CASE("Random char finded", "[Rabin-Karp algorithm]") {
 //    std::string s = generateRandomString(1);
     std::string s = "h";
     std::cout << s;
-    std::vector<size_t> result = RabinKarpAlgorithm(t.c_str(), s.c_str(), t.size(), s.size());
+    std::vector<long> result = RabinKarpAlgorithm(t.c_str(), s.c_str(), t.size(), s.size());
     std::sort(result.begin(), result.end());
     REQUIRE( result == getAllOccurences(t, s));
 }
@@ -55,7 +55,7 @@ TEST_CASE("Many occurences case", "[Rabin-Karp algorithm]") {
 
     std::string s = "pattern";
     std::string t = "hellouaotstn" + s + "ahothstnheao" + s + "thnhthkt" + s + "haeosutn" + s + "hththaestnu" + s + s + s + "h" + s + "hygsaseohtupattern";
-    std::vector<size_t> result = RabinKarpAlgorithm(t.c_str(), s.c_str(), t.size(), s.size());
+    std::vector<long> result = RabinKarpAlgorithm(t.c_str(), s.c_str(), t.size(), s.size());
     std::sort(result.begin(), result.end());
     REQUIRE( result == getAllOccurences(t, s));
 }
@@ -65,7 +65,7 @@ TEST_CASE("Equal string case", "[Rabin-Karp algorithm]") {
 
     std::string t = "hellouaotstnahothstnheaothnhthkthaeosutnhththaestnuhygsaseohtupattern";
     std::string s = t;
-    std::vector<size_t> result = RabinKarpAlgorithm(t.c_str(), s.c_str(), t.size(), s.size());
+    std::vector<long> result = RabinKarpAlgorithm(t.c_str(), s.c_str(), t.size(), s.size());
     std::sort(result.begin(), result.end());
     REQUIRE( result == getAllOccurences(t, s));
 }
@@ -73,7 +73,7 @@ TEST_CASE("Equal string case", "[Rabin-Karp algorithm]") {
 TEST_CASE("Random case 1", "[Rabin-Karp algorithm]") {
     omp_set_num_threads(threadsNum);
 
-    std::vector<size_t> rightPositions, positions;
+    std::vector<long> rightPositions, positions;
     srand(static_cast<unsigned int>(time(0)));
     std::string pattern;
     std::string t = generateRandomStringByPattern(pattern, &rightPositions);
@@ -86,7 +86,7 @@ TEST_CASE("Random case 1", "[Rabin-Karp algorithm]") {
 TEST_CASE("Random case 2 - 10k text size", "[Rabin-Karp algorithm]") {
     omp_set_num_threads(threadsNum);
 
-    std::vector<size_t> rightPositions, positions;
+    std::vector<long> rightPositions, positions;
     srand(static_cast<unsigned int>(time(0)));
     std::string pattern;
     int textSize = 10000;
@@ -100,7 +100,7 @@ TEST_CASE("Random case 2 - 10k text size", "[Rabin-Karp algorithm]") {
 TEST_CASE("Random case 3 - 20k text size", "[Rabin-Karp algorithm]") {
     omp_set_num_threads(threadsNum);
 
-    std::vector<size_t> rightPositions, positions;
+    std::vector<long> rightPositions, positions;
     srand(static_cast<unsigned int>(time(0)));
     std::string pattern;
     int textSize = 20000;

@@ -11,29 +11,38 @@
 #include <vector>
 #include <omp.h>
 
-int p = 3;
+int p = 33;
+int max_value = 103000111;
 
-inline int rehash(char a, char b, int h, int d) {
-    int result = (((h - a*d)*p) + b); // hash mat be huge, so we keep it in [0..INT_MAX]
+inline long rehash(char a, char b, long h, long d) {
+    long result = (((h - a*d)*p) + b) % max_value;
+    if(result < 0)
+        result = result + max_value;
     return result;
 }
 
-std::vector<size_t> RabinKarpAlgorithm(const char *t, const char *s, int n, int m) {
-    std::vector<size_t> positions;
+long myPow (long x, long p) {
+    long i = 1;
+    for (long j = 1; j <= p; j++)  i = (i * x) % max_value;
+    return i;
+}
+
+std::vector<long> RabinKarpAlgorithm(const char *t, const char *s, size_t n, size_t m) {
+    std::vector<long> positions;
 #pragma omp parallel
 {
-    std::vector<size_t> pos_private;
+    std::vector<long> pos_private;
     int tid = omp_get_thread_num();
     int threadsCount = omp_get_num_threads();
     int threadPortion = n / threadsCount;
     int start = tid * threadPortion, end = std::min((tid+1)*threadPortion + (m-1), n);
-    int d = pow(p, m-1);
-    int ht, hs;
+    long d = myPow(p, m-1);
+    long ht, hs;
     ht = hs = 0;
     int i;
     for (i = 0; i < m; i++) {
-        hs = ( ( hs * p ) + s[i] );
-        ht = ( ( ht * p ) + t[i + start] );
+        hs = ( ( hs * p ) + s[i] ) % max_value;
+        ht = ( ( ht * p ) + t[i + start] ) % max_value;
     }
     /* Searching */
 

@@ -18,7 +18,7 @@
 #include <random>
 
 std::string generateRandomString(int length);
-std::string generateRandomStringByPattern(std::string &pattern, std::vector<size_t> *positions, size_t length = 0);
-std::vector<size_t> getAllOccurences(std::string str, std::string sub);
+std::string generateRandomStringByPattern(std::string &pattern, std::vector<long> *positions, size_t length = 0);
+std::vector<long> getAllOccurences(std::string str, std::string sub);
 
 #endif /* Other_h */

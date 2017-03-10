@@ -15,8 +15,7 @@
 
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::vector<size_t> rightPositions, positions;
+    std::vector<long> rightPositions, positions;
     std::string t, s;
     size_t length;
     std::cout << "Enter S string(pattern) size:";
@@ -26,6 +25,9 @@ int main(int argc, const char * argv[]) {
     std::cout << "Enter T string(text) size:";
     std::cin >> length;
     t = generateRandomStringByPattern(s, &rightPositions, length);
+    
+    double seqTime = 0;
+    double parTime = 0;
     
     int threadsCount = 1;
     do {
@@ -42,6 +44,14 @@ int main(int argc, const char * argv[]) {
         std::cout << (positions == rightPositions);
         std::cout << "\nOccurences count:" << rightPositions.size() << "\n";
         std::cout << "Time is" << end - start << std::endl;
+        
+        if (threadsCount == 1)
+            seqTime = end - start;
+        else {
+            parTime = end - start;
+            std::cout << "Acceleration factor is: " << seqTime/parTime << "\n";
+        }
+            
         
         positions.clear();
     } while(threadsCount != 0);

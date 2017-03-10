@@ -11,6 +11,6 @@
 
 #include <vector>
 
-std::vector<size_t> RabinKarpAlgorithm(const char *t, const char *s, int n, int m);
+std::vector<long> RabinKarpAlgorithm(const char *t, const char *s, size_t n, size_t m);
 
 #endif /* sol_h */
