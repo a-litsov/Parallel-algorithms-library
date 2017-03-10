@@ -182,6 +182,7 @@
 					2C3EFAC41E5DFE84002F7895 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = JGX86HY4QU;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					2C3EFAD61E5E0142002F7895 = {
@@ -330,12 +331,15 @@
 					/usr/local/opt/llvm/lib/clang/3.9.1/include,
 					../..,
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/opt/llvm/lib,
 					/usr/local/Cellar/llvm/3.9.1/lib,
 				);
 				OTHER_CFLAGS = "-fopenmp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -349,12 +353,14 @@
 					/usr/local/opt/llvm/lib/clang/3.9.1/include,
 					../..,
 				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/opt/llvm/lib,
 					/usr/local/Cellar/llvm/3.9.1/lib,
 				);
 				OTHER_CFLAGS = "-fopenmp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -409,6 +415,7 @@
 				2C3EFACB1E5DFE84002F7895 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2C3EFADB1E5E0142002F7895 /* Build configuration list for PBXNativeTarget "Demonstration" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +424,7 @@
 				2C3EFADD1E5E0142002F7895 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

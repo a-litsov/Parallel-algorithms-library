@@ -10,7 +10,8 @@
 #define sol_h
 
 #include <vector>
+#include <string>
 
-std::vector<long> RabinKarpAlgorithm(const char *t, const char *s, size_t n, size_t m);
+std::vector<long> RabinKarpAlgorithm(std::string t, std::string s);
 
 #endif /* sol_h */

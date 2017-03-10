@@ -8,51 +8,56 @@
 #include "sol.h"
 
 #include <math.h>
-#include <vector>
 #include <omp.h>
 
+
 int p = 33;
-int max_value = 103000111;
+int maxValue = 103000111;
 
 inline long rehash(char a, char b, long h, long d) {
-    long result = (((h - a*d)*p) + b) % max_value;
+    long result = (((h - a*d)*p) + b) % maxValue;
     if(result < 0)
-        result = result + max_value;
+        result = result + maxValue;
     return result;
 }
 
 long myPow (long x, long p) {
     long i = 1;
-    for (long j = 1; j <= p; j++)  i = (i * x) % max_value;
+    for (long j = 1; j <= p; j++)  i = (i * x) % maxValue;
     return i;
 }
 
-std::vector<long> RabinKarpAlgorithm(const char *t, const char *s, size_t n, size_t m) {
+std::vector<long> RabinKarpAlgorithm(std::string t, std::string s) {
     std::vector<long> positions;
+    size_t n = t.size();
+    size_t m = s.size();
 #pragma omp parallel
 {
     std::vector<long> pos_private;
-    int tid = omp_get_thread_num();
-    int threadsCount = omp_get_num_threads();
-    int threadPortion = n / threadsCount;
-    int start = tid * threadPortion, end = std::min((tid+1)*threadPortion + (m-1), n);
+    size_t tid = omp_get_thread_num();
+    size_t threadsCount = omp_get_num_threads();
+    size_t threadPortion = n / threadsCount;
+    size_t start = tid * threadPortion, end = (tid == threadsCount-1) ? n : (tid+1)*threadPortion + (m-1);
     long d = myPow(p, m-1);
     long ht, hs;
     ht = hs = 0;
-    int i;
+    size_t i;
+    
+    /* Hashing pattern and first pattern.size symbols in text string */
     for (i = 0; i < m; i++) {
-        hs = ( ( hs * p ) + s[i] ) % max_value;
-        ht = ( ( ht * p ) + t[i + start] ) % max_value;
+        hs = ((hs * p) + s[i]) % maxValue;
+        ht = ((ht * p) + t[i + start]) % maxValue;
     }
+    
     /* Searching */
-
-    for (i=m; i <= end-start; i++) {
-        if (ht == hs && memcmp(&t[ i+start-m ], s, m) == 0)
-            pos_private.push_back(i + start - m);
-        ht = rehash(t[i+start-m], t[i+start], ht, d);
+    for (i = m+start; i <= end; i++) {
+        if (ht == hs && t.substr(i-m, m) ==  s)
+            pos_private.push_back(i - m);
+        ht = rehash(t[i-m], t[i], ht, d);
     }
 #pragma omp critical
     positions.insert(positions.end(), pos_private.begin(), pos_private.end());
 }
+    std::sort(positions.begin(), positions.end());
     return positions;
 }
