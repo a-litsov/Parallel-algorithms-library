@@ -24,28 +24,36 @@ int main (int argc, char * argv[])
     if (argc > 1)
         num_threads = atoi(argv[1]);
     
-    ifstream inputfile("search.in", ios::binary|ios::in);
-    ofstream outputfile("search.out", ios::binary|ios::out);
+    ifstream infile("search.in", ios::binary|ios::in);
+    ofstream outfile("search.out", ios::binary|ios::out);
     
     vector<long> positions;
+    /* reading */
     string inputStrings[2]; // 0 item is pattern, 1 item is text
     size_t length;
     
     for (int i = 0; i < 2; i++) {
-        inputfile.read((char *)&length, sizeof(size_t));
+        infile.read((char *)&length, sizeof(size_t));
         char buffer[length];
-        inputfile.read(buffer, length);
+        infile.read(buffer, length);
         inputStrings[i] = buffer;
     }
     
+    /* executing */
     omp_set_num_threads(num_threads);
     
     double time = omp_get_wtime();
     positions = RabinKarpAlgorithm(inputStrings[1], inputStrings[0]);
     time = omp_get_wtime() - time;
     
-    fclose(stdout);
-    fclose(stdin);
+    /* writing */
+    outfile.write((char*)&time, sizeof(double));
+    length = positions.size();
+    outfile.write((char*)&length, sizeof(size_t));
+    outfile.write((char*)&positions[0], positions.size() * sizeof(long));
+    
+    outfile.close();
+    infile.close();
     return 0;
 }
 
