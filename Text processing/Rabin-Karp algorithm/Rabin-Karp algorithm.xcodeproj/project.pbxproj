@@ -19,6 +19,7 @@
 		2CC93CB11E7459B1005D9B9B /* Other.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C3EFAEA1E5E10F0002F7895 /* Other.cpp */; };
 		2CC93CB91E746A63005D9B9B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CC93CB81E746A63005D9B9B /* main.cpp */; };
 		2CC93CBD1E746B4E005D9B9B /* libiomp5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C14BEC91E5C84C500816DC5 /* libiomp5.dylib */; };
+		2CC93CC51E747515005D9B9B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CC93CC41E747515005D9B9B /* main.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +59,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		2CC93CC01E747515005D9B9B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +84,8 @@
 		2CC93CAC1E745121005D9B9B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2CC93CB61E746A63005D9B9B /* BinaryTester */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BinaryTester; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC93CB81E746A63005D9B9B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		2CC93CC21E747515005D9B9B /* BinaryViewer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = BinaryViewer; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CC93CC41E747515005D9B9B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +120,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2CC93CBF1E747515005D9B9B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -120,6 +139,7 @@
 				2C3EFAD81E5E0142002F7895 /* Demonstration */,
 				2CC93CAB1E745121005D9B9B /* Generator */,
 				2CC93CB71E746A63005D9B9B /* BinaryTester */,
+				2CC93CC31E747515005D9B9B /* BinaryViewer */,
 				2C14BEBF1E5C83EB00816DC5 /* Products */,
 				2C14BEC81E5C84C500816DC5 /* Frameworks */,
 			);
@@ -132,6 +152,7 @@
 				2C3EFAD71E5E0142002F7895 /* Demonstration */,
 				2CC93CAA1E745121005D9B9B /* Generator */,
 				2CC93CB61E746A63005D9B9B /* BinaryTester */,
+				2CC93CC21E747515005D9B9B /* BinaryViewer */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,6 +213,14 @@
 				2CC93CB81E746A63005D9B9B /* main.cpp */,
 			);
 			path = BinaryTester;
+			sourceTree = "<group>";
+		};
+		2CC93CC31E747515005D9B9B /* BinaryViewer */ = {
+			isa = PBXGroup;
+			children = (
+				2CC93CC41E747515005D9B9B /* main.cpp */,
+			);
+			path = BinaryViewer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +294,23 @@
 			productReference = 2CC93CB61E746A63005D9B9B /* BinaryTester */;
 			productType = "com.apple.product-type.tool";
 		};
+		2CC93CC11E747515005D9B9B /* BinaryViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2CC93CC61E747515005D9B9B /* Build configuration list for PBXNativeTarget "BinaryViewer" */;
+			buildPhases = (
+				2CC93CBE1E747515005D9B9B /* Sources */,
+				2CC93CBF1E747515005D9B9B /* Frameworks */,
+				2CC93CC01E747515005D9B9B /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BinaryViewer;
+			productName = BinaryViewer;
+			productReference = 2CC93CC21E747515005D9B9B /* BinaryViewer */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -295,6 +341,11 @@
 						DevelopmentTeam = JGX86HY4QU;
 						ProvisioningStyle = Automatic;
 					};
+					2CC93CC11E747515005D9B9B = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = JGX86HY4QU;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 2C14BEB91E5C83EB00816DC5 /* Build configuration list for PBXProject "Rabin-Karp algorithm" */;
@@ -313,6 +364,7 @@
 				2C3EFAD61E5E0142002F7895 /* Demonstration */,
 				2CC93CA91E745121005D9B9B /* Generator */,
 				2CC93CB51E746A63005D9B9B /* BinaryTester */,
+				2CC93CC11E747515005D9B9B /* BinaryViewer */,
 			);
 		};
 /* End PBXProject section */
@@ -352,6 +404,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC93CB91E746A63005D9B9B /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2CC93CBE1E747515005D9B9B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2CC93CC51E747515005D9B9B /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,6 +628,22 @@
 			};
 			name = Release;
 		};
+		2CC93CC71E747515005D9B9B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JGX86HY4QU;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2CC93CC81E747515005D9B9B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = JGX86HY4QU;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -611,6 +687,14 @@
 			buildConfigurations = (
 				2CC93CBB1E746A63005D9B9B /* Debug */,
 				2CC93CBC1E746A63005D9B9B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2CC93CC61E747515005D9B9B /* Build configuration list for PBXNativeTarget "BinaryViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2CC93CC71E747515005D9B9B /* Debug */,
+				2CC93CC81E747515005D9B9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
