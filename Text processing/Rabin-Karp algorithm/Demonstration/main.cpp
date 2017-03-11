@@ -36,7 +36,7 @@ int main(int argc, const char * argv[]) {
         omp_set_num_threads(threadsCount);
         
         double start = omp_get_wtime();
-        positions = RabinKarpAlgorithm(t, s, t.size(), s.size());
+        positions = RabinKarpAlgorithm(t, s);
         double end = omp_get_wtime();
         
         std::cout << "All is done! Result is:";

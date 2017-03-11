@@ -14,7 +14,7 @@ std::mt19937 gen(rd());
 std::uniform_real_distribution<> dis(0, 1);
 
 // returns randomly generated string with length equals to value stored in 'length' argument
-std::string generateRandomString(int length) {
+std::string generateRandomString(size_t length) {
     srand(static_cast<unsigned int>(time(0)));
     std::string alphabet = "abcdefghijklmnopqrstuvwxyz", result = "";
     for(int i = 0; i < length; i++) {
@@ -33,7 +33,7 @@ std::string generateRandomStringByPattern(std::string &pattern, std::vector<long
     if (length == 0)
         length = rand() % max_length + 1;
     // if pattern-string not set
-    int coef = 8; // how many times pattern.length smaller than text.length
+    int coef = 20; // how many times pattern.length smaller than text.length
     std::string alphabet = "abcdefghijklmnopqrstuvwxyz", result = "";
     size_t patternSize = pattern.size();
     switch(patternSize) {
@@ -52,9 +52,9 @@ std::string generateRandomStringByPattern(std::string &pattern, std::vector<long
     while(result.size() < length) {
         pos = rand() % alphabet.size();
         result += alphabet[pos];
-        //
         if (dis(gen) < probability && result.size() + pattern.size() <= length) {
-            positions->push_back(result.size());
+            if(positions != 0)
+                positions->push_back(result.size());
             result += pattern;
         }
     }

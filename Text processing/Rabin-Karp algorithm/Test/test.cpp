@@ -8,10 +8,7 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include <iostream>
 #include <omp.h>
-#include <math.h>
-#include <vector>
 #include "catch.hpp"
-#include <string>
 
 #include "../Solution/sol.h"
 #include "../Other/Other.h"
