@@ -27,15 +27,18 @@ using namespace std;
 
 int main()
 {
-    for(int i = 0; i < testsCount; i++) {
-        ofstream outfile(to_string(i+1) + ".in", ofstream::binary);
+    for(int i = 1; i <= testsCount; i++) {
+        ofstream outfile(to_string(i) + ".in", ios::binary|ios::out);
         size_t patternLength = rand() % (patternLengthRange[1] - patternLengthRange[0] + 1) + patternLengthRange[0];
         std::string pattern = generateRandomString(patternLength);
+        size_t length = pattern.size()+1;
+        outfile.write((char*)&length, sizeof(size_t));
         outfile.write(pattern.c_str(), pattern.size() + 1);
         
-        vector<long> positions;
         size_t textSize = textStartSize + i*textStepSize;
         std::string text = generateRandomStringByPattern(pattern, 0, textSize);
+        length = text.size()+1;
+        outfile.write((char*)&length, sizeof(size_t));
         outfile.write(text.c_str(), text.size() + 1);
         outfile.close();
     }
