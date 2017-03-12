@@ -27,10 +27,10 @@ long myPow (long x, long p) {
     return i;
 }
 
-std::vector<long> RabinKarpAlgorithm(std::string t, std::string s) {
+std::vector<long> RabinKarpAlgorithm(std::string text, std::string pattern) {
     std::vector<long> positions;
-    size_t n = t.size();
-    size_t m = s.size();
+    size_t n = text.size();
+    size_t m = pattern.size();
 #pragma omp parallel
 {
     std::vector<long> pos_private;
@@ -45,15 +45,15 @@ std::vector<long> RabinKarpAlgorithm(std::string t, std::string s) {
     
     /* Hashing pattern and first pattern.size symbols in text string */
     for (i = 0; i < m; i++) {
-        hs = ((hs * p) + s[i]) % maxValue;
-        ht = ((ht * p) + t[i + start]) % maxValue;
+        hs = ((hs * p) + pattern[i]) % maxValue;
+        ht = ((ht * p) + text[i + start]) % maxValue;
     }
     
     /* Searching */
     for (i = m+start; i <= end; i++) {
-        if (ht == hs && t.substr(i-m, m) ==  s)
+        if (ht == hs && text.substr(i-m, m) ==  pattern)
             pos_private.push_back(i - m);
-        ht = rehash(t[i-m], t[i], ht, d);
+        ht = rehash(text[i-m], text[i], ht, d);
     }
 #pragma omp critical
     positions.insert(positions.end(), pos_private.begin(), pos_private.end());

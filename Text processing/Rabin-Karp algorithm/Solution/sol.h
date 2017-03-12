@@ -12,6 +12,6 @@
 #include <vector>
 #include <string>
 
-std::vector<long> RabinKarpAlgorithm(std::string t, std::string s);
+std::vector<long> RabinKarpAlgorithm(std::string text, std::string pattern);
 
 #endif /* sol_h */
