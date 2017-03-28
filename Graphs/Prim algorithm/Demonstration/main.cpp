@@ -7,18 +7,20 @@
 //
 
 #include <iostream>
+#include <iomanip>
 #include <vector>
 #include <random>
 #include <ctime>
 #include <map>
 #include <set>
+#include <list>
 
 using namespace std;
 
 const int INF = 1000000000; // значение "бесконечность"
 
-void PrimAlgorithm(int n, int** g) {
-    // алгоритм
+int PrimAlgorithm(int n, int** g) {
+    int res = 0;
     vector<bool> used (n);
     vector<int> min_e (n, INF), sel_e (n, -1);
     min_e[0] = 0;
@@ -33,8 +35,10 @@ void PrimAlgorithm(int n, int** g) {
         }
         
         used[v] = true;
-        if (sel_e[v] != -1)
+        if (sel_e[v] != -1) {
             cout << v << " " << sel_e[v] << endl;
+            res += g[v][sel_e[v]];
+        }
         
         for (int to=0; to<n; ++to)
             if (g[v][to] < min_e[to]) {
@@ -43,6 +47,7 @@ void PrimAlgorithm(int n, int** g) {
                 
             }
     }
+    return res;
 }
 
 int getStart(int end, int** g, int n) {
@@ -59,76 +64,108 @@ int getEnd(int start, int** g, int n) {
     return INF;
 }
 
+int fillOneVertex(int &start, int &end, int** g, int n) {
+    srand(uint(time(0)));
+    start = rand() % n;
+    end = rand() % n;
+    while (end == start)
+        end = rand() % n;
+    while (g[start][end] != INF) {
+        start = rand() % n;
+        end = rand() % n;
+        while (end == start)
+            end = rand() % n;
+    }
+    return g[end][start] = g[start][end] = rand() % 200;
+}
 
-int** generateConnectedGraph(int n) {
-    // Инициализация
+int** initializeGraphMatrix(int n) {
     int** g = new int*[n];
     for (int i = 0; i < n; i++) {
         g[i] = new int[n];
         for (int j = 0; j < n; j++)
             g[i][j] = INF;
     }
-    map<int, set<int>> groupMap;
+    return g;
+}
+
+// n >= 4
+int** generateConnectedGraph(int n) {
+    int** g = initializeGraphMatrix(n);
     
-    srand(time(0));
-    for (int i = 0; i < n*(n-1)/8; i++) {
-        int start = rand() % n;
-        int end = rand() % n;
-        while (end == start)
-            end = rand() % n;
-        int sourceStart = INF, tmpStart = getStart(start, g, n);
-        while (tmpStart != INF) {
-            sourceStart = tmpStart;
-            tmpStart = getStart(start, g, n);
+    set<set<int>*> groupSet;
+    
+    // Generates n*(n-1)/4 vertices, fills groups
+    for (int i = 0; i < (n-1)*(n-2)/2 + 1; i++) {
+        int start, end, value;
+        value = fillOneVertex(start, end, g, n);
+        set<int> *foundStart = 0, *foundEnd = 0;
+        bool isStartFound = false, isEndFound = false;
+        for (auto const& item: groupSet) {
+            auto search = item->find(start);
+            if (search != item->end()) {
+                foundStart = item;
+                isStartFound = true;
+            }
+            search = item->find(end);
+            if (search != item->end()) {
+                foundEnd = item;
+                isEndFound = true;
+            }
         }
-        if (sourceStart != INF) {
-            auto search = groupMap.find(start);
-            if (search != groupMap.end())
-                cout << "Error\n";
-            search->second.insert(start);
-            search->second.insert(end);
+        if (foundStart != 0 && foundEnd != 0) {
+            foundStart->insert(foundEnd->begin(), foundEnd->end());
+            groupSet.erase(foundEnd);
         } else {
-            set<int> newGroup;
-            newGroup.insert(start);
-            newGroup.insert(end);
-            int tmpEnd = getEnd(end, g, n);
-            if (tmpEnd != INF) {
-                auto search = groupMap.find(start);
-                if (search != groupMap.end())
-                    cout << "Error\n";
-                newGroup.insert(search->second.begin(), search->second.end());
-                groupMap.erase(search->first);
-                groupMap.insert(std::pair<int, set<int>>(start, newGroup));
+            if (isStartFound) {
+                foundStart->insert(end);
+            } else {
+                if (isEndFound) {
+                    foundEnd->insert(start);
+                } else {
+                    set<int>* newSet = new set<int>();
+                    newSet->insert(start);
+                    newSet->insert(end);
+                    groupSet.insert(newSet);
+                }
             }
         }
     }
+    
+    // Makes connections between groups
+    set<set<int>*>::iterator it;
+    for (it = groupSet.begin(); it != groupSet.end(); it++) {
+        set<set<int>*>::iterator next_it = next(it);
+        if (next_it != groupSet.end()) {
+            int start = *((*it)->begin());
+            int end = *((*next_it)->begin());
+            fillOneVertex(start, end, g, n);
+        }
+    }
+
     
     return g;
 }
 
-int main(int argc, const char * argv[]) {
-    int n = 9;
-    int** g = new int*[n];
+void showGraph(int** g, int n) {
+    cout << "Graph is:\n";
     for (int i = 0; i < n; i++) {
-        g[i] = new int[n];
-        for (int j = 0; j < n; j++)
-            g[i][j] = INF;
+        for (int j = 0; j < n; j++) {
+            cout << setw(10);
+            cout << g[i][j] << " ";
+        }
+        cout << "\n";
     }
-    g[0][1] = 4; g[0][7] = 8;
-    g[1][2] = 8; g[1][7] = 11;
-    g[2][3] = 7; g[2][5] = 4; g[2][8] = 2;
-    g[3][4] = 9; g[3][5] = 14;
-    g[4][5] = 10;
-    g[5][6] = 2;
-    g[6][7] = 1; g[6][8] = 6;
-    g[7][8] = 7;
-    for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            if (g[i][j] != INF) {
-                g[j][i] = g[i][j];
-                g[i][j] = INF;
-            }
-    PrimAlgorithm(n, g);
+}
+
+int main(int argc, const char * argv[]) {
+    int n = 200;
+    int** g = generateConnectedGraph(n);
+    
+    showGraph(g, n);
+    
+    int minWeight = PrimAlgorithm(n, g);
+    cout << "Min weight is " << minWeight << "\n";
     for (int i = 0; i < n; i++)
         delete[] g[i];
     delete[] g;
