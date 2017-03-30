@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2C7F4DE71E8D04E6003FE114 /* libiomp5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0386561E8CFA9400EF5F36 /* libiomp5.dylib */; };
-		2C8C71F41E882BDC00F4379D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C71EE1E882BA300F4379D /* main.cpp */; };
+		2C84DADB1E8DA202003849EF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C71EE1E882BA300F4379D /* main.cpp */; };
+		2C84DAE21E8DA2BC003849EF /* sol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C84DAE11E8DA2BC003849EF /* sol.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,8 @@
 		2C0386561E8CFA9400EF5F36 /* libiomp5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiomp5.dylib; path = ../../../../../../usr/local/Cellar/llvm/4.0.0/lib/libiomp5.dylib; sourceTree = "<group>"; };
 		2C0386581E8CFC5600EF5F36 /* libgomp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgomp.dylib; path = ../../../../../../usr/local/Cellar/llvm/4.0.0/lib/libgomp.dylib; sourceTree = "<group>"; };
 		2C03865A1E8CFF3F00EF5F36 /* libomp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libomp.dylib; path = ../../../../../../usr/local/Cellar/llvm/4.0.0/lib/libomp.dylib; sourceTree = "<group>"; };
+		2C84DAE11E8DA2BC003849EF /* sol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sol.cpp; sourceTree = "<group>"; };
+		2C84DAE31E8DA2D9003849EF /* sol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sol.h; sourceTree = "<group>"; };
 		2C8C71EC1E882BA300F4379D /* Demonstration */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Demonstration; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8C71EE1E882BA300F4379D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -53,9 +56,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2C84DAE01E8DA2BC003849EF /* Solution */ = {
+			isa = PBXGroup;
+			children = (
+				2C84DAE11E8DA2BC003849EF /* sol.cpp */,
+				2C84DAE31E8DA2D9003849EF /* sol.h */,
+			);
+			path = Solution;
+			sourceTree = "<group>";
+		};
 		2C8C71D51E882B0B00F4379D = {
 			isa = PBXGroup;
 			children = (
+				2C84DAE01E8DA2BC003849EF /* Solution */,
 				2C8C71ED1E882BA300F4379D /* Demonstration */,
 				2C8C71DF1E882B0B00F4379D /* Products */,
 				2C0386551E8CFA9400EF5F36 /* Frameworks */,
@@ -135,7 +148,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C8C71F41E882BDC00F4379D /* main.cpp in Sources */,
+				2C84DAE21E8DA2BC003849EF /* sol.cpp in Sources */,
+				2C84DADB1E8DA202003849EF /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
