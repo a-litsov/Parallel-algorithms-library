@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C7F4DE71E8D04E6003FE114 /* libiomp5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C0386561E8CFA9400EF5F36 /* libiomp5.dylib */; };
 		2C8C71F41E882BDC00F4379D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C8C71EE1E882BA300F4379D /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2C0386561E8CFA9400EF5F36 /* libiomp5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiomp5.dylib; path = ../../../../../../usr/local/Cellar/llvm/4.0.0/lib/libiomp5.dylib; sourceTree = "<group>"; };
+		2C0386581E8CFC5600EF5F36 /* libgomp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgomp.dylib; path = ../../../../../../usr/local/Cellar/llvm/4.0.0/lib/libgomp.dylib; sourceTree = "<group>"; };
+		2C03865A1E8CFF3F00EF5F36 /* libomp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libomp.dylib; path = ../../../../../../usr/local/Cellar/llvm/4.0.0/lib/libomp.dylib; sourceTree = "<group>"; };
 		2C8C71EC1E882BA300F4379D /* Demonstration */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Demonstration; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8C71EE1E882BA300F4379D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -32,17 +36,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C7F4DE71E8D04E6003FE114 /* libiomp5.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C0386551E8CFA9400EF5F36 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C03865A1E8CFF3F00EF5F36 /* libomp.dylib */,
+				2C0386581E8CFC5600EF5F36 /* libgomp.dylib */,
+				2C0386561E8CFA9400EF5F36 /* libiomp5.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2C8C71D51E882B0B00F4379D = {
 			isa = PBXGroup;
 			children = (
 				2C8C71ED1E882BA300F4379D /* Demonstration */,
 				2C8C71DF1E882B0B00F4379D /* Products */,
+				2C0386551E8CFA9400EF5F36 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,10 +146,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = /usr/local/opt/llvm/bin/clang;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -166,9 +183,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/opt/llvm/lib/clang/4.0.0/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/opt/llvm/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-fopenmp";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -177,10 +197,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CC = /usr/local/opt/llvm/bin/clang;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -207,8 +228,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/local/opt/llvm/lib/clang/4.0.0/include;
+				LIBRARY_SEARCH_PATHS = /usr/local/opt/llvm/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "-fopenmp";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -216,6 +240,14 @@
 		2C8C71F11E882BA300F4379D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CC = /usr/local/opt/llvm/bin/clang;
+				HEADER_SEARCH_PATHS = /usr/local/opt/llvm/lib/clang/4.0.0/include;
+				LD_RUNPATH_SEARCH_PATHS = /usr/local/opt/llvm/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/opt/llvm/lib,
+					/usr/local/Cellar/llvm/4.0.0/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -223,6 +255,14 @@
 		2C8C71F21E882BA300F4379D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CC = /usr/local/opt/llvm/bin/clang;
+				HEADER_SEARCH_PATHS = /usr/local/opt/llvm/lib/clang/4.0.0/include;
+				LD_RUNPATH_SEARCH_PATHS = /usr/local/opt/llvm/lib;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/local/opt/llvm/lib,
+					/usr/local/Cellar/llvm/4.0.0/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -246,6 +286,7 @@
 				2C8C71F21E882BA300F4379D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
